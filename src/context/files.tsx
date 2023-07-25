@@ -37,9 +37,12 @@ interface IFileContextData {
   handleUpload(file: any): void;
 }
 
+interface IFileProvider {
+  children: ReactNode;
+}
 const FileContext = createContext<IFileContextData>({} as IFileContextData);
 
-const FileProvider = (children: ReactNode) => {
+const FileProvider: React.FC<IFileProvider> = ({ children }) => {
   const [uploadedFiles, setUploadedFiles] = useState<IFile[]>([]);
 
   useEffect(() => {
